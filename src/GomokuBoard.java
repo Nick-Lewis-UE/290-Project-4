@@ -3,11 +3,16 @@ import java.util.List;
 
 public class GomokuBoard extends AbstractBoard {
 
-    public GomokuBoard(List<List<AbstractPiece>> grid) {
+    public GomokuBoard(ArrayList<ArrayList<Piece>> grid) {
         this.grid = grid;
     }
 
-    public GomokuBoard() {this(new ArrayList<ArrayList<AbstractPiece()>>);}
+    public GomokuBoard() {this(new ArrayList<ArrayList<Piece>>());}
     public void addPiece() {}
     public void printBoard() {}
+
+    @Override
+    public ArrayList<ArrayList<Piece>> getGrid() {
+        return grid;
+    }
 }
