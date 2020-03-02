@@ -3,6 +3,10 @@ public class Piece {
         this.symbol = symbol;
     }
 
+    public Piece() {
+        this.symbol = " ";
+    }
+
     protected String symbol;
 
     public void place(){}

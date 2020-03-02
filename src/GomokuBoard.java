@@ -9,7 +9,9 @@ public class GomokuBoard extends AbstractBoard {
 
     public GomokuBoard() {this(new ArrayList<ArrayList<Piece>>());}
     public void addPiece() {}
-    public void printBoard() {}
+    public void printBoard() {
+        System.out.println("| | | | | | | | | | | | | | | | | | | |");
+    }
 
     @Override
     public ArrayList<ArrayList<Piece>> getGrid() {

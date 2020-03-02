@@ -21,4 +21,9 @@ public class BoardTest {
         Connect4Board b2 = new Connect4Board();
         testBoard(b2, new ArrayList<ArrayList<Piece>>());
     }
+    @Test
+    public void testPrintBoard() {
+        Connect4Board b1 = new Connect4Board();
+        b1.printBoard();
+    }
 }

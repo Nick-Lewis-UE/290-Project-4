@@ -11,5 +11,8 @@ public class PieceTest {
         String s1 = "x";
         Piece p1 = new Piece (s1);
         testPiece(p1, s1);
+
+        Piece p2 = new Piece();
+        testPiece(p2, " ");
     }
 }
