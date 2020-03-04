@@ -8,14 +8,14 @@ public class GomokuBoard extends AbstractBoard {
     }
 
     public GomokuBoard() {
+        this.num_col = 19;
+        this.num_row = 19;
+        this.size = 361;
         ArrayList<Piece> grid = new ArrayList<Piece>();
         for (int i = 0; i < 361; i++) {
             grid.add(i, new Piece());
         }
         this.grid = grid;
-        this.num_col = 19;
-        this.num_row = 19;
-        this.size = 361;
     }
 
     public void addPiece(Piece p, int row, int col) {
@@ -46,10 +46,5 @@ public class GomokuBoard extends AbstractBoard {
                     "|" + grid.get(i + 18).getSymbol() +
                     "|");
         }
-    }
-
-    @Override
-    public ArrayList<Piece> getGrid() {
-        return grid;
     }
 }

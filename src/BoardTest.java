@@ -5,9 +5,14 @@ import java.util.ArrayList;
 
 public class BoardTest {
     private void testBoard(AbstractBoard b, ArrayList<Piece> grid) {
+        Assert.assertEquals(grid.size(), b.getSize());
+        System.out.println("Grid Size: " + grid.size());
         Assert.assertEquals(grid.size(), b.getGrid().size());
-        for (int i = 0; i < grid.size(); i++)
+        for (int i = 0; i < grid.size(); i++) {
+//            System.out.println(b.getGrid().get(i).getSymbol());
+//            System.out.println(grid.get(i).getSymbol());
             Assert.assertEquals(b.getGrid().get(i).getSymbol(), grid.get(i).getSymbol());
+        }
     }
 
     @Test
@@ -17,7 +22,7 @@ public class BoardTest {
         // testing empty constructor
         GomokuBoard g1 = new GomokuBoard();
         ArrayList<Piece> a1 = new ArrayList<Piece>();
-        for (int i = 0; i < g1.getSize(); i++) {
+        for (int i = 0; i < 361; i++) {
             a1.add(i, new Piece());
         }
         testBoard(g1, a1);
@@ -26,7 +31,7 @@ public class BoardTest {
         // Connect4
         Connect4Board b2 = new Connect4Board();
         ArrayList<Piece> a2 = new ArrayList<Piece>();
-        for (int i = 0; i < b2.getSize(); i++) {
+        for (int i = 0; i < 42; i++) {
             a2.add(i, new Piece());
         }
         testBoard(b2, a2);
@@ -50,7 +55,7 @@ public class BoardTest {
         g1.addPiece(p1, 5,5);
 
         ArrayList<Piece> a1 = new ArrayList<>();
-        for (int i = 0; i < g1.getSize(); i++) {
+        for (int i = 0; i < 361; i++) {
             a1.add(i, new Piece());
         }
         a1.set(24, p1);
@@ -63,7 +68,7 @@ public class BoardTest {
         c1.addPiece(p2, 3,4);
         c1.addPiece(p3, 5, 6);
         ArrayList<Piece> a2 = new ArrayList<>();
-        for (int i = 0; i < c1.getSize(); i++) {
+        for (int i = 0; i < 42; i++) {
             a2.add(i, new Piece());
         }
         a2.set(11, p2);

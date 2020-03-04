@@ -21,8 +21,10 @@ public abstract class AbstractBoard {
         return num_col;
     }
 
+    public ArrayList<Piece> getGrid() {
+        return grid;
+    }
+
     public void addPiece(Piece p2, int i, int i1) {}
     public void printBoard() {}
-
-    public abstract ArrayList<Piece> getGrid();
 }
