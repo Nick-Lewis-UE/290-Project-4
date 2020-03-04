@@ -1,8 +1,8 @@
 public class GomokuGame extends AbstractGame {
 
     public GomokuGame() {
-        this.board = new GomokuBoard();
-        this.p1 = new Player("x");
-        this.p2 = new Player("o");
+        this.setBoard(new GomokuBoard());
+        this.setP1(new Player("x"));
+        this.setP2(new Player("o"));
     }
 }

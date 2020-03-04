@@ -6,13 +6,20 @@ import java.util.ArrayList;
 public class BoardTest {
     private void testBoard(AbstractBoard b, ArrayList<Piece> grid) {
         Assert.assertEquals(grid.size(), b.getSize());
-        System.out.println("Grid Size: " + grid.size());
-        Assert.assertEquals(grid.size(), b.getGrid().size());
+//        System.out.println("Grid Size: " + grid.size());
         for (int i = 0; i < grid.size(); i++) {
 //            System.out.println(b.getGrid().get(i).getSymbol());
 //            System.out.println(grid.get(i).getSymbol());
             Assert.assertEquals(b.getGrid().get(i).getSymbol(), grid.get(i).getSymbol());
         }
+    }
+
+    public ArrayList<Piece> makeEmptyBoard(int size) {
+        ArrayList<Piece> a1 = new ArrayList<Piece>();
+        for (int i = 0; i < size; i++) {
+            a1.add(i, new Piece());
+        }
+        return a1;
     }
 
     @Test
@@ -21,20 +28,12 @@ public class BoardTest {
 
         // testing empty constructor
         GomokuBoard g1 = new GomokuBoard();
-        ArrayList<Piece> a1 = new ArrayList<Piece>();
-        for (int i = 0; i < 361; i++) {
-            a1.add(i, new Piece());
-        }
-        testBoard(g1, a1);
+        testBoard(g1, makeEmptyBoard(g1.getSize()));
 
 
         // Connect4
         Connect4Board b2 = new Connect4Board();
-        ArrayList<Piece> a2 = new ArrayList<Piece>();
-        for (int i = 0; i < 42; i++) {
-            a2.add(i, new Piece());
-        }
-        testBoard(b2, a2);
+        testBoard(b2, makeEmptyBoard(b2.getSize()));
     }
     @Test
     public void testPrintBoard() {
@@ -54,10 +53,7 @@ public class BoardTest {
         Piece p1 = new Piece("x");
         g1.addPiece(p1, 5,5);
 
-        ArrayList<Piece> a1 = new ArrayList<>();
-        for (int i = 0; i < 361; i++) {
-            a1.add(i, new Piece());
-        }
+        ArrayList<Piece> a1 = makeEmptyBoard(g1.getSize());
         a1.set(24, p1);
         testBoard(g1, a1);
 
@@ -67,10 +63,7 @@ public class BoardTest {
         Piece p3 = new Piece("x");
         c1.addPiece(p2, 3,4);
         c1.addPiece(p3, 5, 6);
-        ArrayList<Piece> a2 = new ArrayList<>();
-        for (int i = 0; i < 42; i++) {
-            a2.add(i, new Piece());
-        }
+        ArrayList<Piece> a2 = makeEmptyBoard(c1.getSize());
         a2.set(11, p2);
         a2.set(29, p3);
         testBoard(c1, a2);
