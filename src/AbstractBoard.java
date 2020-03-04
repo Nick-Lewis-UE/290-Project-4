@@ -1,13 +1,27 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class AbstractBoard {
     // outer list is rows, inner list is columns
     protected ArrayList<Piece> grid;
+    protected int size;
+    protected int num_col;
+    protected int num_row;
 
     public AbstractBoard() {}
 
-    public void addPiece() {}
+    public int getSize() {
+        return size;
+    }
+
+    public int getNum_row() {
+        return num_row;
+    }
+
+    public int getNum_col() {
+        return num_col;
+    }
+
+    public void addPiece(Piece p2, int i, int i1) {}
     public void printBoard() {}
 
     public abstract ArrayList<Piece> getGrid();

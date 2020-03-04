@@ -13,7 +13,11 @@ public class GomokuBoard extends AbstractBoard {
             grid.add(i, new Piece());
         }
         this.grid = grid;
+        this.num_col = 19;
+        this.num_row = 19;
+        this.size = 361;
     }
+
     public void addPiece(Piece p, int row, int col) {
             int index = row*col-1;
             grid.set(index, p);

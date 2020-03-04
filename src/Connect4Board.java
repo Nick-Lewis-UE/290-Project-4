@@ -12,8 +12,15 @@ public class Connect4Board extends AbstractBoard {
             grid.add(i, new Piece());
         }
         this.grid = grid;
+        this.num_col = 7;
+        this.num_row = 6;
+        this.size = 42;
     }
-    public void addPiece() {}
+    public void addPiece(Piece p, int row, int col) {
+        int index = row*col-1;
+        grid.set(index, p);
+    }
+
     public void printBoard() {
         for (int i = 0; i < 42; i=i+7) {
             System.out.println("|"+grid.get(i).getSymbol()+

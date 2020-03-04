@@ -17,7 +17,7 @@ public class BoardTest {
         // testing empty constructor
         GomokuBoard g1 = new GomokuBoard();
         ArrayList<Piece> a1 = new ArrayList<Piece>();
-        for (int i = 0; i < 361; i++) {
+        for (int i = 0; i < g1.getSize(); i++) {
             a1.add(i, new Piece());
         }
         testBoard(g1, a1);
@@ -26,7 +26,7 @@ public class BoardTest {
         // Connect4
         Connect4Board b2 = new Connect4Board();
         ArrayList<Piece> a2 = new ArrayList<Piece>();
-        for (int i = 0; i < 42; i++) {
+        for (int i = 0; i < b2.getSize(); i++) {
             a2.add(i, new Piece());
         }
         testBoard(b2, a2);
@@ -50,10 +50,24 @@ public class BoardTest {
         g1.addPiece(p1, 5,5);
 
         ArrayList<Piece> a1 = new ArrayList<>();
-        for (int i = 0; i < 361; i++) {
+        for (int i = 0; i < g1.getSize(); i++) {
             a1.add(i, new Piece());
         }
         a1.set(24, p1);
         testBoard(g1, a1);
+
+        //Connect4
+        Connect4Board c1 = new Connect4Board();
+        Piece p2 = new Piece("o");
+        Piece p3 = new Piece("x");
+        c1.addPiece(p2, 3,4);
+        c1.addPiece(p3, 5, 6);
+        ArrayList<Piece> a2 = new ArrayList<>();
+        for (int i = 0; i < c1.getSize(); i++) {
+            a2.add(i, new Piece());
+        }
+        a2.set(11, p2);
+        a2.set(29, p3);
+        testBoard(c1, a2);
     }
 }
