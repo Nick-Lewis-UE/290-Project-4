@@ -26,6 +26,9 @@ public abstract class AbstractBoard {
     }
 
     public void addPiece(Piece p2, int i, int i1) {}
+    public void addPiece(Piece p, int i) {
+        grid.set(i, p);
+    };
     public void printBoard() {}
 
     public ArrayList<Piece> makeEmptyBoard() {

@@ -9,11 +9,7 @@ public class Play {
 
         game = startup(scan);
         game.getBoard().printBoard();
-
-        boolean win = false;
-        while (!win) {
-            game.play();
-        }
+        game.play();
 
     }
 

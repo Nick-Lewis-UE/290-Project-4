@@ -24,6 +24,9 @@ public class GomokuBoard extends AbstractBoard {
     }
 
     public void printBoard() {
+        char label = 'A';
+        int rowID = 1;
+        System.out.print("|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|O|P|Q|R|\n");
         for (int i = 0; i < 361; i = i + 19) {
             System.out.println("|" + grid.get(i).getSymbol() +
                     "|" + grid.get(i + 1).getSymbol() +
@@ -44,7 +47,8 @@ public class GomokuBoard extends AbstractBoard {
                     "|" + grid.get(i + 16).getSymbol() +
                     "|" + grid.get(i + 17).getSymbol() +
                     "|" + grid.get(i + 18).getSymbol() +
-                    "|");
+                    "|" + rowID);
+            rowID++;
         }
     }
 }

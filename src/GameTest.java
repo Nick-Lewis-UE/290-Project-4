@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class GameTest {
@@ -32,5 +33,9 @@ public class GameTest {
         Connect4Board b2 = new Connect4Board();
 
         testGame(g2, b2, p1, p2);
+    }
+
+    @Test
+    public void testScanForPiece() {
     }
 }
