@@ -28,12 +28,12 @@ public class BoardTest {
 
         // testing empty constructor
         GomokuBoard g1 = new GomokuBoard();
-        testBoard(g1, makeEmptyBoard(g1.getSize()));
+        testBoard(g1, g1.makeEmptyBoard());
 
 
         // Connect4
         Connect4Board b2 = new Connect4Board();
-        testBoard(b2, makeEmptyBoard(b2.getSize()));
+        testBoard(b2, b2.makeEmptyBoard());
     }
     @Test
     public void testPrintBoard() {
@@ -53,7 +53,7 @@ public class BoardTest {
         Piece p1 = new Piece("x");
         g1.addPiece(p1, 5,5);
 
-        ArrayList<Piece> a1 = makeEmptyBoard(g1.getSize());
+        ArrayList<Piece> a1 = g1.makeEmptyBoard();
         a1.set(24, p1);
         testBoard(g1, a1);
 
@@ -63,7 +63,7 @@ public class BoardTest {
         Piece p3 = new Piece("x");
         c1.addPiece(p2, 3,4);
         c1.addPiece(p3, 5, 6);
-        ArrayList<Piece> a2 = makeEmptyBoard(c1.getSize());
+        ArrayList<Piece> a2 = c1.makeEmptyBoard();
         a2.set(11, p2);
         a2.set(29, p3);
         testBoard(c1, a2);

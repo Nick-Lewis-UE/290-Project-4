@@ -27,4 +27,12 @@ public abstract class AbstractBoard {
 
     public void addPiece(Piece p2, int i, int i1) {}
     public void printBoard() {}
+
+    public ArrayList<Piece> makeEmptyBoard() {
+        ArrayList<Piece> a1 = new ArrayList<Piece>();
+        for (int i = 0; i < this.size; i++) {
+            a1.add(i, new Piece());
+        }
+        return a1;
+    }
 }
