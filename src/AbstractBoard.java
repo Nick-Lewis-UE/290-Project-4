@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public abstract class AbstractBoard {
     // outer list is rows, inner list is columns
-    protected ArrayList<Piece> grid;
+    protected ArrayList<ArrayList<Piece>> grid;
     protected int size;
     protected int num_col;
     protected int num_row;
@@ -21,21 +21,36 @@ public abstract class AbstractBoard {
         return num_col;
     }
 
-    public ArrayList<Piece> getGrid() {
+    public ArrayList<ArrayList<Piece>> getGrid() {
         return grid;
     }
 
-    public void addPiece(Piece p2, int i, int i1) {}
-    public void addPiece(Piece p, int i) {
-        grid.set(i, p);
-    };
+    public void addPiece(Piece p, int row, int col) {}
+//    public void addPiece(ArrayList<Piece> p, int i) {
+//        grid.set(i, p);
+//    }
+//
     public void printBoard() {}
 
-    public ArrayList<Piece> makeEmptyBoard() {
-        ArrayList<Piece> a1 = new ArrayList<Piece>();
-        for (int i = 0; i < this.size; i++) {
-            a1.add(i, new Piece());
+//    public boolean validMove(int move) {
+//        if (move >= size)
+//            return false;
+//        if (grid.get(move).getSymbol() != " ")
+//            return false;
+//
+//        return true;
+//    }
+//
+    public boolean justWon(Player p, int row, int col) {return false;}
+//
+    public ArrayList<ArrayList<Piece>> makeEmptyBoard() {
+        ArrayList<ArrayList<Piece>> a= new ArrayList();
+        for (int i = 0; i < num_row; i++) {
+            a.add(i, new ArrayList<>());
+            for (int j = 0; j < num_col; j++) {
+                a.get(i).add(j, new Piece());
+            }
         }
-        return a1;
+        return a;
     }
 }

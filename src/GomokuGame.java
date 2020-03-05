@@ -9,18 +9,20 @@ public class GomokuGame extends AbstractGame {
     }
 
     @Override
-    public int scanForPiece(){
+    public int[] scanForPiece(){
+        int[] loc = new int[2];
         Scanner scan = new Scanner(System.in);
         String letter = scan.next().toUpperCase();
-        int num1 = (int)letter.charAt(0)-64;
-        int num2 = scan.nextInt()-1;
+        loc[0] = (int)letter.charAt(0)-64;
+        loc[1] = scan.nextInt();
 
-        if(num1 > getBoard().getNum_col() || num2 > getBoard().getNum_row()) {
-            System.out.println("Out of bounds. Try again.");
-            return scanForPiece();
-        }
+//        if(num1 > getBoard().getNum_col() || num2 > getBoard().getNum_row()) {
+//            System.out.println("Out of bounds. Try again.");
+//            return scanForPiece();
+//        }
 
 //        System.out.println(num_equivalent);
-        return num2*getBoard().getNum_col()+num1-1;
+        return loc;
+
     }
 }

@@ -1,8 +1,10 @@
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
+import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public abstract class AbstractGame {
+
     public AbstractGame() {
     }
 
@@ -11,32 +13,47 @@ public abstract class AbstractGame {
     private Player p2;
 
     public void play() {
-        Boolean win = false;
-        while (!win) {
+        Boolean win;
+        while (true) {
             Scanner scan = new Scanner(System.in);
-
+            int[] loc;
+//            int gridIndex;
+//
             System.out.println("Player 1's turn!");
-
-            this.board.addPiece(p1.getPiece(), scanForPiece());
+//
+            loc = scanForPiece();
+            this.board.addPiece(p1.getPiece(), loc[1], loc[0]);
             this.board.printBoard();
-            break;
+            win = board.justWon(p1, loc[0], loc[1]);
+            if (win) break;
+//
+//            System.out.println("Player 2's turn!");
+//
+//            coordinate = scanForPiece();
+//            gridIndex = (coordinate[1]-1)*getBoard().getNum_col()+coordinate[0]-1;
+//            this.board.addPiece(p1.getPiece(), gridIndex);
+//            this.board.printBoard();
+//            win = board.justWon(gridIndex);
+//            if (win) break;
         }
     }
 
-    public int scanForPiece() {
+    public int[] scanForPiece() {
         Scanner scan = new Scanner(System.in);
-        int num1 = Character.getNumericValue(scan.next().charAt(0));
-        int num2 = Character.getNumericValue(scan.next().charAt(0));
-
+        int col = Character.getNumericValue(scan.next().charAt(0));
+        int row = Character.getNumericValue(scan.next().charAt(0));
 //        System.out.println(num1 + " " + num2);
 
-        if(num1 > board.getNum_col() || num2 > board.getNum_row()) {
-            System.out.println("Out of bounds. Try again.");
-            return scanForPiece();
-        }
+//        if(this.board.validMove(index)) {
+//            System.out.println("Out of bounds. Try again.");
+//            return scanForPiece();
+//        }
 
-        return num2*this.board.getNum_col()+num2-1;
-    };
+        int[] coordinate = new int[2];
+        coordinate[0] = col;
+        coordinate[1] = row;
+        return coordinate;
+    }
 
     public AbstractBoard getBoard() {
         return board;

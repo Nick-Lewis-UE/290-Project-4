@@ -1,17 +1,18 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 
 public class GameTest {
     private void testGame(AbstractGame g, AbstractBoard b, Player p1, Player p2) {
-        ArrayList<Piece> grid = b.makeEmptyBoard();
-        Assert.assertEquals(grid.size(), b.getSize());
-        for (int i = 0; i < grid.size(); i++) {
+        ArrayList<ArrayList<Piece>> grid = b.makeEmptyBoard();
+        Assert.assertEquals(grid.size()*grid.get(0).size(), b.getSize());
+        for (int i = 0; i < b.getNum_row(); i++) {
 //            System.out.println(b.getGrid().get(i).getSymbol());
 //            System.out.println(grid.get(i).getSymbol());
-            Assert.assertEquals(b.getGrid().get(i).getSymbol(), grid.get(i).getSymbol());
+            for (int j = 0; j < b.getNum_col(); j++)
+                Assert.assertEquals(grid.get(i).get(j).getSymbol(),
+                        b.getGrid().get(i).get(j).getSymbol());
         }
         Assert.assertEquals(p1.getPiece().getSymbol(), g.getP1().getPiece().getSymbol());
         Assert.assertEquals(p2.getPiece().getSymbol(), g.getP2().getPiece().getSymbol());
