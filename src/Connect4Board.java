@@ -10,6 +10,7 @@ public class Connect4Board extends AbstractBoard {
         this.num_col = 7;
         this.num_row = 6;
         this.size = 42;
+        this.needToWin = 4;
         ArrayList<ArrayList<Piece>> grid = new ArrayList<>();
         for (int i = 0; i < num_row; i++) {
             grid.add(i, new ArrayList<>());

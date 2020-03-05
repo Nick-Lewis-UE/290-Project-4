@@ -13,7 +13,7 @@ public abstract class AbstractGame {
     private Player p2;
 
     public void play() {
-        Boolean win;
+        int winningPlayer = 1;
         while (true) {
             Scanner scan = new Scanner(System.in);
             int[] loc;
@@ -24,30 +24,34 @@ public abstract class AbstractGame {
             loc = scanForPiece();
             this.board.addPiece(p1.getPiece(), loc[1], loc[0]);
             this.board.printBoard();
-            win = board.justWon(p1, loc[0], loc[1]);
-            if (win) break;
+            if (board.justWon(p1, loc[0], loc[1])) {
+                winningPlayer = 0;
+                break;
+            }
 //
-//            System.out.println("Player 2's turn!");
-//
-//            coordinate = scanForPiece();
-//            gridIndex = (coordinate[1]-1)*getBoard().getNum_col()+coordinate[0]-1;
-//            this.board.addPiece(p1.getPiece(), gridIndex);
-//            this.board.printBoard();
-//            win = board.justWon(gridIndex);
-//            if (win) break;
+            System.out.println("Player 2's turn!");
+
+            loc = scanForPiece();
+            this.board.addPiece(p2.getPiece(), loc[1], loc[0]);
+            this.board.printBoard();
+            if (board.justWon(p2, loc[0], loc[1])) {
+                winningPlayer = 1;
+                break;
+            }
         }
+
+        String[] winMessage = new String[2];
+        winMessage[0] = "Player 1";
+        winMessage[1] = "Player 2";
+        System.out.println("Congratulations, " + winMessage[winningPlayer] +
+                "! You won!");
+
     }
 
     public int[] scanForPiece() {
         Scanner scan = new Scanner(System.in);
         int col = Character.getNumericValue(scan.next().charAt(0));
         int row = Character.getNumericValue(scan.next().charAt(0));
-//        System.out.println(num1 + " " + num2);
-
-//        if(this.board.validMove(index)) {
-//            System.out.println("Out of bounds. Try again.");
-//            return scanForPiece();
-//        }
 
         int[] coordinate = new int[2];
         coordinate[0] = col;
